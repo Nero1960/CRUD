@@ -17,7 +17,7 @@ conectarDB();
 app.use(express.json());
 
 //agregar los routes
-app.use('/api/crud/', router)
+app.use('/api/crud', router)
 
 //asignar un puerto local
 const port = process.env.PORT || 4000;

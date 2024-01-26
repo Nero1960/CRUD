@@ -22,12 +22,14 @@ const usuarioSchema = new mongoose.Schema({
 
     telefono: {
         type: String,
-        trim: true
+        trim: true,
+        default: null
     },
 
     empresa: {
         type: String,
-        trim: true
+        trim: true,
+        default: null
     }
 
 });
