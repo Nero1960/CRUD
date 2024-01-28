@@ -1,5 +1,4 @@
 import Usuarios from "../models/Usuarios.js"
-import mongoose from "mongoose";
 
 const registrar = async (request, response) => {
     const {email} = request.body;
@@ -45,7 +44,54 @@ const actualizar = async (request, response) => {
     
 }
 
+const obtenerUsuarios = async (request, response) => {
+    try {
+        const usuarios = await Usuarios.find();
+        response.json(usuarios);
+    } catch (err) {
+        const error = new Error('Ha ocurrido un error');
+        return response.json({msg: error.message});
+        
+    }
+}
+
+const obtenerUsuario = async (request, response) => {
+    const {_id} = request.params;
+
+    try {
+
+       const usuario = await Usuarios.findById(_id);
+       response.json(usuario);
+
+    } catch (error) {
+        const err = new Error('El usuario no existe');
+        return response.json({msg: err.message});
+    }
+    
+}
+
+const eliminar = async (request, response) => {
+    const { _id } = request.params; 
+
+    try {
+        const usuario = await Usuarios.findById(_id);
+
+        if(usuario){
+            await usuario.deleteOne();
+            response.json('Usuario eliminado correctamente');
+        }
+    } catch (err) {
+
+        const error = new Error('El usuario no existe');
+        return response.status(404).json({msg: error.message})
+        
+    }
+}
+
 export {
+    obtenerUsuario,
+    obtenerUsuarios,
     registrar,
-    actualizar
+    actualizar, 
+    eliminar
 }
