@@ -7,7 +7,7 @@ const registrar = async (request, response) => {
 
     if(usuarioExiste){
         const error = new Error('El usuario ya existe');
-        response.status(403).json({msg: error.message});
+        response.status(400).json({msg: error.message});
         return;
     }
 
@@ -17,7 +17,7 @@ const registrar = async (request, response) => {
         response.json(usuarioNuevo);
     
    } catch (error) {
-    console.log(error);
+        console.log(error);
    }
 }
 
