@@ -5,7 +5,6 @@ import Eliminar from '../img/Trash.svg'
 
 export const ListadoUsuarios = ({ usuario }) => {
     const { nombre, apellido, email, telefono, _id, empresa } = usuario;
-    console.log(usuario);
     return (
         <tr className="border-b">
             <td className="p-6 space-y-2">
