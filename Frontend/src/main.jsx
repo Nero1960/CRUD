@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import { Inicio, loader as usuariosLoader } from './pages/Inicio'
 import { IndexLayout} from './Layouts/IndexLayout'
-import { Registrar } from './pages/Registrar'
+import { Registrar, action as registrarUsuarioAction } from './pages/Registrar'
 import './index.css'
 
 
@@ -21,7 +21,8 @@ const router = createBrowserRouter([
 
       {
         path: '/registrar',
-        element: <Registrar/>
+        element: <Registrar/>,
+        action: registrarUsuarioAction
       }
     ]
 

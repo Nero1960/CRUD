@@ -11,7 +11,7 @@ export async function loader() {
 
     } catch (error) {
         console.log(error);
-        return null;
+        return [];
 
     }
 }
@@ -26,8 +26,8 @@ export const Inicio = () => {
         <>
             <h1 className="font-black text-4xl text-indigo-700 text-center my-10">{usuarios.length > 0 ? 'Usuarios Registrados' : 'Comienza a registrar a tus usuarios'}</h1>
 
-            <main className='mx-10 mt-5'>
-                {usuarios.length ? (
+            <main className='mx-10 my-5'>
+                {usuarios.length > 0 ? (
                     <table className="w-full bg-white shadow-sm  mt-5 table-auto">
                         <thead className="bg-indigo-600 text-white">
                             <tr className="text-left">
