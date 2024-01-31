@@ -51,8 +51,6 @@ export async function action({ request }) {
         return null;
     }
 
-
-
 }
 
 export const Registrar = () => {
