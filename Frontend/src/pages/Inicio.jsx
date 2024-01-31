@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router-dom'
 import { ListadoUsuarios } from '../components/ListadoUsuarios';
+import imagen from '../img/ilustracions.png'
 
 export async function loader() {
     try {
@@ -24,7 +25,7 @@ export const Inicio = () => {
 
     return (
         <>
-            <h1 className="font-black text-4xl text-indigo-700 text-center my-10">{usuarios.length > 0 ? 'Usuarios Registrados' : 'Comienza a registrar a tus usuarios'}</h1>
+            <h1 className="font-black text-4xl text-indigo-700 text-center my-10">{usuarios.length > 0 ? 'Lista de Usuarios Registrados' : 'Comienza Registrando a Tus Usuarios'}</h1>
 
             <main className='mx-10 my-5'>
                 {usuarios.length > 0 ? (
@@ -51,7 +52,10 @@ export const Inicio = () => {
 
 
                 ) : (
-                    <p className="text-center mt-2 text-xl">No hay Registros.</p>
+                    <>
+                        <img src={imagen} alt="imagen inicio" className='block -mt-24 mx-auto h-50' width={800} height={0} />
+                    </>
+                    
 
                 )}
 

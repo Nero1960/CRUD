@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import { Inicio, loader as usuariosLoader } from './pages/Inicio'
 import { IndexLayout} from './Layouts/IndexLayout'
 import { Registrar, action as registrarUsuarioAction } from './pages/Registrar'
+import { Actualizar, loader as actualizarLoader, action as actualizarAction} from './pages/Actualizar'
+import { action as eliminarAction } from './components/ListadoUsuarios'
 import './index.css'
 
 
@@ -23,6 +25,18 @@ const router = createBrowserRouter([
         path: '/registrar',
         element: <Registrar/>,
         action: registrarUsuarioAction
+      },
+
+      {
+        path: '/actualizar/:_id',
+        element: <Actualizar/>,
+        loader: actualizarLoader,
+        action: actualizarAction
+      },
+
+      {
+        path: '/eliminar/:_id',
+        action: eliminarAction
       }
     ]
 

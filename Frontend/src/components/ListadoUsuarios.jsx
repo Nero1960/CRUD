@@ -2,9 +2,28 @@ import { useNavigate, Form, redirect } from "react-router-dom";
 import Editar from '../img/PencilSquare.svg'
 import Eliminar from '../img/Trash.svg'
 
+export async function action({params}){
+    const _id = params._id;
+    try {
+        const url = `http://localhost:4000/api/crud/eliminar/${_id}`;
+        const respuesta = await fetch(url, {
+            method: 'delete'
+        });
+
+        await respuesta.json();
+        return redirect('/');
+        
+    } catch (error) {
+        return error;
+        
+    }
+
+}
+
 
 export const ListadoUsuarios = ({ usuario }) => {
     const { nombre, apellido, email, telefono, _id, empresa } = usuario;
+    const navigate = useNavigate();
     return (
         <tr className="border-b">
             <td className="p-6 space-y-2">
@@ -18,10 +37,15 @@ export const ListadoUsuarios = ({ usuario }) => {
 
             <td className="p-6  flex gap-x-2 items-center">
                 <button>
-                    <img src={Editar} alt="icon-editar" width="30" height="30"/>
+                    <img src={Editar} alt="icon-editar" width="30" height="30" onClick={() => navigate(`/actualizar/${_id}`)}/>
                 </button>
 
-                <Form>
+                <Form method="post" action={`/eliminar/${_id}`} onSubmit={(e) => {
+                    if(!confirm(`Deseas eliminar el registro ${nombre} ${apellido}`)){
+                        e.preventDefault();
+                    }
+
+                } }>
                     <button type="submit" className="p-1">
                         <img src={Eliminar} alt="icon Eliminar" width={30} height={30} />
                     </button>
